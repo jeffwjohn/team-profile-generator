@@ -2,10 +2,14 @@
 // const { exportAllDeclaration } = require('@babel/types');
 const Manager = require('../lib/Manager');
 
-test('creates a manager object', () => {
-    const manager = new Manager('Jody');
+jest.mock('../lib/Manager');
 
-    expect(manager.name).toBe('Jody');
+console.log(new Manager());
+
+test('creates a manager object', () => {
+    const manager = new Manager('Mocker');
+
+    expect(manager.name).toBe('Mocker');
     expect(manager.id).toEqual(expect.any(Number));
     expect(manager.email).toEqual(expect.any(String));
     expect(manager.officeNumber).toEqual(expect.any(String));

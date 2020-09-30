@@ -1,4 +1,4 @@
-const { epilog } = require('yargs');
+// const { epilog } = require('yargs');
 const Engineer = require('../lib/Engineer');
 
 test('creates an engineer object', () => {
