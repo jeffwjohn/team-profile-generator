@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+module.exports = templateData => {
+
+
+    const team = templateData;
+
+    return `
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +13,16 @@
     <title>Team-Profile</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <header>
+        <h1>My Team</h1>
+    </header>
+
+    <main>
     
+    </main>
 </body>
 </html>
+    `;
+};

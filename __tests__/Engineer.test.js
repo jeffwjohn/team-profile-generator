@@ -10,3 +10,15 @@ test('creates an engineer object', () => {
     expect(engineer.github).toEqual(expect.any(String));
 
 });
+
+test("gets engineer GitHub username as an object", () => {
+    const engineer = new Engineer('Mocker');
+
+    expect(engineer.getGithub()).toHaveProperty('github');
+});
+
+test("gets engineer role as an object", () => {
+    const engineer = new Engineer('Mocker');
+
+    expect(engineer.getRole()).toHaveProperty('role');
+});
