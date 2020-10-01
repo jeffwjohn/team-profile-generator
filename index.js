@@ -83,7 +83,7 @@ Program.prototype.initializeProgram = function () {
 
         console.log(this.manager);
 
-        writeHTML("Team-Profile.html", response);
+        writeHTML("Team-Profile.html", this.manager);
     })
 };
 
