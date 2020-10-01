@@ -2,7 +2,7 @@
 const Engineer = require('../lib/Engineer');
 
 test('creates an engineer object', () => {
-    const engineer = new Engineer('Jody');
+    const engineer = new Engineer('Jody', 2, 'jody@company.com', 'jody76');
 
     expect(engineer.name).toBe('Jody');
     expect(engineer.id).toEqual(expect.any(Number));
@@ -20,5 +20,5 @@ test("gets engineer GitHub username as an object", () => {
 test("gets engineer role as an object", () => {
     const engineer = new Engineer('Mocker');
 
-    expect(engineer.getRole()).toHaveProperty('role');
+    expect(engineer.getRole()).toHaveProperty('role', 'Engineer');
 });

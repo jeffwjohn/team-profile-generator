@@ -5,12 +5,9 @@ const Manager = require('./lib/Manager');
 // const Engineer = require('../lib/Engineer');
 // const Intern = require('../lib/Intern');
 
-// var data = {
-//     manager: "",
-//     id: "",
-//     email: "",
-//     office: ""
-// }
+function Program() {
+    this.manager;
+}
 
 
 // ARRAY OF QUESTIONS
@@ -55,7 +52,7 @@ const questions = [{
     },
     {
         type: 'input',
-        name: 'office',
+        name: 'officeNumber',
         message: "What is the team manager's office number?",
         validate: nameInput => {
             if (nameInput) {
@@ -78,17 +75,15 @@ const writeHTML = (fileName, data) => {
 }
 
 //FUNCTION TO INITIALIZE PROGRAM
-function Program() {
-    inquirer.prompt(questions).then(response => {
+Program.prototype.initializeProgram = function () {
 
-        const manager = new Manager(response.name);
+    inquirer.prompt(questions).then(({
+        response
+    }) => {
 
-            
-        
+        this.manager = new Manager(name);
 
-
-
-        console.log(manager);
+        console.log(this.manager);
 
         writeHTML("Team-Profile.html", response);
     })
@@ -97,4 +92,4 @@ function Program() {
 // FUNCTION CALL RUN PROGRAM
 // init();
 
-new Program();
+new Program().initializeProgram();

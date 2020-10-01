@@ -4,7 +4,7 @@ const Employee = require('../lib/Employee');
 // console.log(new Employee());
 
 test('creates an employee object', () => {
-    const employee = new Employee('Mocker');
+    const employee = new Employee('Mocker', 1, 'mocker@company.com');
 
     expect(employee.name).toBe('Mocker');
     expect(employee.id).toEqual(expect.any(Number));
@@ -33,5 +33,5 @@ test("gets employee email as an object", () => {
 test("gets employee role as an object", () => {
     const employee = new Employee('Mocker');
 
-    expect(employee.getRole()).toHaveProperty('role');
+    expect(employee.getRole()).toHaveProperty('role', 'Employee');
 });
