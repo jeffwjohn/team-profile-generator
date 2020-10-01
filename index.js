@@ -13,7 +13,7 @@ function Program() {
 // ARRAY OF QUESTIONS
 const questions = [{
         type: 'input',
-        name: 'manager',
+        name: 'name',
         message: "What is the team manager's name?",
         validate: nameInput => {
             if (nameInput) {
@@ -77,11 +77,9 @@ const writeHTML = (fileName, data) => {
 //FUNCTION TO INITIALIZE PROGRAM
 Program.prototype.initializeProgram = function () {
 
-    inquirer.prompt(questions).then(({
-        response
-    }) => {
-
-        this.manager = new Manager(name);
+    inquirer.prompt(questions).then(response => {
+        console.log(response);
+        this.manager = new Manager(response.name, response.id, response.email, response.officeNumber);
 
         console.log(this.manager);
 
