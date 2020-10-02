@@ -1,7 +1,15 @@
-const generateHTML = data => {
-    console.log(data);
+const Manager = require("../lib/Manager");
 
-    // const team = templateData;
+const generateHTML = (data) => {
+    // console.log(data);
+    // const [manager] = data;
+    
+    const team = data;
+    // console.log('Team:', team);
+    const manager = new Manager(data[0].name, data[0].id, data[0].email, data[0].officeNumber);
+    // console.log(manager.getRole());
+    // console.log('Manager:', manager);
+    
 
     return `
     <!DOCTYPE html>
@@ -21,11 +29,15 @@ const generateHTML = data => {
 
     <main>
     <div>
-    <h2>${data.name}</h2>
-    <h3>${data.role}</h3>
-    <h4>${data.id}</h4>
-    <h4>${data.email}</h4>
-    <h4>${data.officeNumber}</h4>
+    <h2>${manager.name}</h2>
+    <h3>${manager.getRole().role}</h3>
+    <h4>${manager.id}</h4>
+    <h4>${manager.email}</h4>
+    <h4>${manager.officeNumber}</h4>
+    </div>
+
+    <div>
+ 
     </div>
     </main>
 </body>
