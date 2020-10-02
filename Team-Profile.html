@@ -16,11 +16,15 @@
 
     <main>
     <div>
-    <h2>xfghjs</h2>
-    <h3>Manager</h3>
-    <h4>1</h4>
-    <h4>sfgj</h4>
-    <h4>12</h4>
+    // FUNCTION TO WRITE HTML
+const writeHTML = (data) => {
+        fs.writeFile("Team-Profile.html", generateHTML(data), (err) => {
+            if (err) console.log(err);
+                
+            console.log('HTML created!');
+    
+    });
+};
     </div>
 
     <div>
