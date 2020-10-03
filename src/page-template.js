@@ -23,6 +23,8 @@
 //     `
 // };
 
+
+
 const generateHTML = teamArr => {
     // console.log('HTML:', teamArr);
     // console.log('Role', data.getRole().role);
@@ -95,20 +97,6 @@ return `
     
         <main>
         <div>
-        <h2>${manager.name}</h2>
-        <h3>${manager.getRole().role}</h3>
-        <h4>${manager.id}</h4>
-        <h4>${manager.email}</h4>
-        <h4>${manager.officeNumber}</h4>
-        </div>
-    
-        <section id='team'  class='team'>
-            <div>
-            <h2>${engineer.name}</h2>
-            <h3>${engineer.getRole().role}</h3>
-            <h4>${engineer.id}</h4>
-            <h4>${engineer.email}</h4>
-            <h4>${engineer.github}</h4>
             </div>
         </section>
     ${generateHTML(team)}
@@ -121,3 +109,18 @@ return `
 
 
 // module.exports = generateHTML;
+
+// <h2>${manager.name}</h2>
+// <h3>${manager.getRole().role}</h3>
+// <h4>${manager.id}</h4>
+// <h4>${manager.email}</h4>
+// <h4>${manager.officeNumber}</h4>
+// </div>
+
+// <section id='team'  class='team'>
+//     <div>
+//     <h2>${engineer.name}</h2>
+//     <h3>${engineer.getRole().role}</h3>
+//     <h4>${engineer.id}</h4>
+//     <h4>${engineer.email}</h4>
+//     <h4>${engineer.github}</h4>
