@@ -1,24 +1,34 @@
-const fs = require('fs');
+// const fs = require('fs');
 const inquirer = require('inquirer');
-const generateHTML = require('./utils/generateHTML');
+// const generatePage = require('./src/page-template.js');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const teamArray = [];
+const {
+    writeFile,
+    copyFile
+} = require('./utils/generate-site');
+
+
+// const pageHTML = generatePage(name, github);
+
+// fs.writeFile('./index.html', pageHTML, err => {
+//     if (err) throw err;
 
 // function Program() {
 //     this.manager;
 // }
 
 // FUNCTION TO WRITE HTML
-const writeHTML = (data) => {
-    fs.writeFile("Team-Profile.html", generateHTML(data), (err) => {
-        if (err) console.log(err);
+// const writeHTML = (data) => {
+//     fs.writeFile("Team-Profile.html", templateData, (err) => {
+//         if (err) console.log(err);
 
-        console.log('HTML created!');
+//         console.log('HTML created!');
 
-    });
-};
+//     });
+// };
 
 // ARRAY OF QUESTIONS
 const managerQuestions = [{
@@ -206,82 +216,106 @@ const internQuestions = [{
     },
 ];
 
-const addIntern = () => {
-    console.log(`
+const addManager = () => {
+    return inquirer.prompt(managerQuestions).then(answers => {
+        // console.log(answers);
+
+        // Create manager object and save to team array
+        this.manager = new Manager(
+            answers.name,
+            answers.id,
+            answers.email,
+            answers.officeNumber
+        );
+
+        teamArray.push(this.manager);
+        return answers;
+        // if (answers.members === 'Add an engineer') {
+
+        //     addEngineer();
+
+        // } else if (answers.members === 'Add an intern') {
+
+        //     addIntern();
+
+        // } else {
+        //     console.log("Team complete!");
+        //     return teamArray;
+        //     // writeFile(teamArray);
+
+        // };
+    })
+};
+
+const addIntern = (answers) => {
+
+    if (answers.members === 'Add an engineer') {
+
+        return false;
+
+    } else if (answers.members === 'My team is complete') {
+        console.log("Team complete!");
+        return teamArray;
+
+    } else {
+
+        console.log(`
 =================
 Add an Intern
 =================
 `);
 
-    inquirer.prompt(internQuestions).then(response => {
-        this.intern = new Intern(response.name, response.id, response.email, response.school);
-        teamArray.push(this.intern);
-        // console.log(teamArray);
-        if (response.members === 'Add an engineer') {
+        return inquirer.prompt(internQuestions).then(answers => {
+            this.intern = new Intern(
+                answers.name,
+                answers.id,
+                answers.email,
+                answers.school
+            );
 
-            addEngineer();
+            teamArray.push(this.intern);
+            console.log(teamArray);
+            return answers;
 
-        } else if (response.members === 'Add an intern') {
-
-            addIntern();
-
-        } else {
-            console.log("Team complete!");
-            writeHTML(teamArray);
-        };
-    })
+        })
+    };
 };
 
-const addEngineer = () => {
-    console.log(`
+const addEngineer = (answers) => {
+
+    if (answers.members === 'Add an intern') {
+
+        return false;
+
+    } else if (answers.members === 'My team is complete') {
+        console.log("Team complete!");
+        return teamArray;
+
+    } else {
+
+        console.log(`
 =================
 Add an Engineer
 =================
 `);
 
-    inquirer.prompt(engineerQuestions).then(response => {
-        this.engineer = new Engineer(response.name, response.id, response.email, response.github);
-        teamArray.push(this.engineer);
-        // console.log(teamArray);
-        if (response.members === 'Add an engineer') {
+        return inquirer.prompt(engineerQuestions).then(answers => {
+            this.engineer = new Engineer(
+                answers.name,
+                answers.id,
+                answers.email,
+                answers.github
+            );
 
-            addEngineer();
+            teamArray.push(this.engineer);
+            console.log(teamArray);
+            return answers;
+            // console.log(teamArray);
 
-        } else if (response.members === 'Add an intern') {
+        })
+    };
 
-            addIntern();
-
-        } else {
-            console.log("Team complete!");
-            writeHTML(teamArray);
-
-        };
-    })
-};
-
-const addManager = () => {
-    return inquirer.prompt(managerQuestions).then(response => {
-        // console.log(response);
-
-        // Create manager object and save to team array
-        this.manager = new Manager(response.name, response.id, response.email, response.officeNumber);
-        teamArray.push(this.manager);
-
-        if (response.members === 'Add an engineer') {
-
-            addEngineer();
-
-        } else if (response.members === 'Add an intern') {
-
-            addIntern();
-
-        } else {
-            console.log("Team complete!");
-            writeHTML(teamArray);
-
-        };
-    })
-};
+}
 
 //FUNCTION TO INITIALIZE PROGRAM
 // Program.prototype.initializeProgram = function () {
@@ -292,7 +326,38 @@ const addManager = () => {
 // FUNCTION CALL RUN PROGRAM
 // init();
 
-addManager();
+addManager()
+    .then(addEngineer)
+    .then(addIntern)
+    
+    // .then(data => {
+    //     if (answers.members === 'Add an engineer') {
+
+    //         addEngineer();
+
+    //     } else if (answers.members === 'Add an intern') {
+
+    //         addIntern();
+
+    //     } else {
+    //         console.log("Team complete!")
+    //     })
+    .then(data => {
+        return generatePage(data);
+    })
+    .then(data => {
+        return writeFile(data);
+    })
+    .then(writeFileResponse => {
+        console.log(writeFileResponse);
+        return copyFile();
+    })
+    .then(copyFileResponse => {
+        console.log(copyFileResponse);
+    })
+    .catch(err => {
+        console.log(err);
+    });
 // .then(data => {
 //     return writeHTML(data);
 // })
