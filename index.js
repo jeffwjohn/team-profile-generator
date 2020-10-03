@@ -244,9 +244,22 @@ const addManager = () => {
         //     // writeFile(teamArray);
 
         // };
-    })
-};
+    }).then(answers => {
+        if (answers.members === 'Add an engineer') {
 
+            return addEngineer(answers)
+
+        } else if (answers.members === 'Add an intern') {
+
+            return addIntern(answers);
+
+        } else {
+            console.log("Team complete!");
+            return teamArray;
+        }
+
+    })
+}
 const addIntern = (answers) => {
 
     if (answers.members === 'Add an engineer') {
@@ -277,6 +290,20 @@ Add an Intern
             console.log(teamArray);
             return answers;
 
+        }).then(answers => {
+            if (answers.members === 'Add an engineer') {
+    
+                return addEngineer(answers)
+    
+            } else if (answers.members === 'Add an intern') {
+    
+                return addIntern(answers);
+    
+            } else {
+                console.log("Team complete!");
+                return teamArray;
+            }
+    
         })
     };
 };
@@ -312,6 +339,20 @@ Add an Engineer
             return answers;
             // console.log(teamArray);
 
+        }).then(answers => {
+            if (answers.members === 'Add an engineer') {
+    
+                return addEngineer(answers)
+    
+            } else if (answers.members === 'Add an intern') {
+    
+                return addIntern(answers);
+    
+            } else {
+                console.log("Team complete!");
+                return teamArray;
+            }
+    
         })
     };
 
@@ -327,9 +368,9 @@ Add an Engineer
 // init();
 
 addManager()
-    .then(addEngineer)
-    .then(addIntern)
-    
+    // .then(addEngineer)
+    // .then(addIntern)
+
     // .then(data => {
     //     if (answers.members === 'Add an engineer') {
 
