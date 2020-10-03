@@ -319,7 +319,6 @@ Add an Engineer
             );
 
             teamArray.push(this.engineer);
-            console.log(teamArray);
             return answers;
 
         }).then(answers => {
@@ -358,11 +357,11 @@ addManager()
         return writeFile(data);
     })
     .then(writeFileResponse => {
-        console.log(writeFileResponse);
+        // console.log(writeFileResponse);
         return copyFile();
     })
     .then(copyFileResponse => {
-        console.log(copyFileResponse);
+        // console.log(copyFileResponse);
     })
     .catch(err => {
         console.log(err);
