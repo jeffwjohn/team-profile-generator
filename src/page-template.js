@@ -17,31 +17,114 @@
 // `;
 // };
 
+
+
+
+
 const generateMembers = membersArray => {
-    
+
     if (!membersArray) {
         return '';
     }
-const memberHtmlArr = membersArray.map(({name, id, email}) => {
 
-return `
-          <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+    const generateManager = membersArray.filter(member => {
+        if (member.getRole().role === 'Manager') {
+            return true;
+        } else {
+            return false;
+        }
+    });
+
+    const managerHtmlArr = generateManager.map(({ name, id, email, officeNumber }) => {
+        return `
+          <div class="col-12 mb-2 bg-dark text-light p-3 flex-column">
             <h3 class="portfolio-item-title text-light">${name}</h3>
             <h5 class="portfolio-languages">
               ID:
               ${id}
             </h5>
-            <p>Email: ${email}</p>
+            <p>Office: ${officeNumber}</p>
+            <p>Email: ${email}</p>   
             <a href="${email}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
           </div>
         `;
+      });
+
+    const generateEngineers = membersArray.filter(member => {
+        if (member.getRole().role === 'Engineer') {
+            return true;
+        } else {
+            return false;
+        }
     });
 
-  return `
+    const engineerHtmlArr = generateEngineers.map(
+        ({ name, id, email, github }) => {
+          return `
+            <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+              <h3 class="portfolio-item-title text-light">${name}</h3>
+              <h5 class="portfolio-languages">
+                ID:
+                ${id}
+              </h5>
+              <p>Email: ${email}</p>
+              <a href="${github}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
+            </div>
+          `;
+        }
+      );
+
+    const generateInterns = membersArray.filter(member => {
+        if (member.getRole().role === 'Intern') {
+            return true;
+        } else {
+            return false;
+        }
+    });
+
+    const internHtmlArr = generateInterns.map(
+        ({ name, id, email, school }) => {
+          return `
+            <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+              <h3 class="portfolio-item-title text-light">${name}</h3>
+              <h5 class="portfolio-languages">
+                Id:
+                ${id}
+              </h5>
+              <p>School: ${school}</p>
+              <p>Email: ${email}</p>
+              <a href="${email}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
+            </div>
+          `;
+        }
+      );
+
+    // const memberHtmlArr = membersArray.map(({
+    //     name,
+    //     id,
+    //     email
+    // }) => {
+
+    //     return `
+    //       <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+    //         <h3 class="portfolio-item-title text-light">${name}</h3>
+    //         <h5 class="portfolio-languages">
+    //           ID:
+    //           ${id}
+    //         </h5>
+    //         <p>Email: ${email}</p>
+    //         <a href="${email}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
+    //       </div>
+    //     `;
+    // });
+
+    return `
     <section class="my-3" id="portfolio">
-      <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
+      <h2 class="text-dark bg-primary p-2 display-inline-block">Team</h2>
       <div class="flex-row justify-space-between">
-      ${memberHtmlArr.join('')}
+      ${managerHtmlArr}
+      ${engineerHtmlArr.join('')}
+      ${internHtmlArr.join('')}
       </div>
     </section>
   `;
@@ -63,7 +146,7 @@ module.exports = templateData => {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Portfolio Demo</title>
+      <title>Team-Profile-Generator</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
       <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="style.css">
