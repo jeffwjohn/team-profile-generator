@@ -218,8 +218,7 @@ const internQuestions = [{
 
 const addManager = () => {
     return inquirer.prompt(managerQuestions).then(answers => {
-        // console.log(answers);
-
+       
         // Create manager object and save to team array
         this.manager = new Manager(
             answers.name,
@@ -230,20 +229,7 @@ const addManager = () => {
 
         teamArray.push(this.manager);
         return answers;
-        // if (answers.members === 'Add an engineer') {
-
-        //     addEngineer();
-
-        // } else if (answers.members === 'Add an intern') {
-
-        //     addIntern();
-
-        // } else {
-        //     console.log("Team complete!");
-        //     return teamArray;
-        //     // writeFile(teamArray);
-
-        // };
+        
     }).then(answers => {
         if (answers.members === 'Add an engineer') {
 
@@ -257,7 +243,6 @@ const addManager = () => {
             console.log("Team complete!");
             return teamArray;
         }
-
     })
 }
 const addIntern = (answers) => {
@@ -303,7 +288,6 @@ Add an Intern
                 console.log("Team complete!");
                 return teamArray;
             }
-    
         })
     };
 };
@@ -337,7 +321,6 @@ Add an Engineer
             teamArray.push(this.engineer);
             console.log(teamArray);
             return answers;
-            // console.log(teamArray);
 
         }).then(answers => {
             if (answers.members === 'Add an engineer') {
@@ -368,21 +351,6 @@ Add an Engineer
 // init();
 
 addManager()
-    // .then(addEngineer)
-    // .then(addIntern)
-
-    // .then(data => {
-    //     if (answers.members === 'Add an engineer') {
-
-    //         addEngineer();
-
-    //     } else if (answers.members === 'Add an intern') {
-
-    //         addIntern();
-
-    //     } else {
-    //         console.log("Team complete!")
-    //     })
     .then(data => {
         return generatePage(data);
     })
@@ -399,9 +367,3 @@ addManager()
     .catch(err => {
         console.log(err);
     });
-// .then(data => {
-//     return writeHTML(data);
-// })
-// .catch(err => {
-//     console.log(err);
-// });;
