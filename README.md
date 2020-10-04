@@ -3,6 +3,8 @@
 ## Description 
 Team Profile Generator is an interactive, Node.js-driven application that captures user input via npm Inquirer. The data is then harnessed to dynamically render development team data to an html page linked to a developer-provided, default stylesheet.
 
+![Screenshot](src/screenshot.png)
+
 ## Table of Contents
 * [Installation](#installation) 
 * [Usage](#usage) 

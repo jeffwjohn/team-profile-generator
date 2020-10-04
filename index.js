@@ -9,7 +9,7 @@ const {
     copyFile
 } = require('./utils/generate-site');
 
-// ARRAY OF QUESTIONS
+// Manager questions array
 const managerQuestions = [{
         type: 'input',
         name: 'name',
@@ -72,6 +72,7 @@ const managerQuestions = [{
     },
 ];
 
+// Engineer question array
 const engineerQuestions = [{
         type: 'input',
         name: 'name',
@@ -133,6 +134,7 @@ const engineerQuestions = [{
     },
 ];
 
+// Intern questions array
 const internQuestions = [{
         type: 'input',
         name: 'name',
@@ -195,10 +197,11 @@ const internQuestions = [{
     },
 ];
 
+// Create manager object and save to team array
 const addManager = () => {
     return inquirer.prompt(managerQuestions).then(answers => {
        
-        // Create manager object and save to team array
+        
         this.manager = new Manager(
             answers.name,
             answers.id,
@@ -224,6 +227,8 @@ const addManager = () => {
         }
     })
 }
+
+// Create intern object and save to team array
 const addIntern = (answers) => {
 
     if (answers.members === 'Add an engineer') {
@@ -271,6 +276,7 @@ Add an Intern
     };
 };
 
+// Create engineer object and save to team array
 const addEngineer = (answers) => {
 
     if (answers.members === 'Add an intern') {
@@ -319,6 +325,7 @@ Add an Engineer
 
 }
 
+// Initialize program and start Promise chain
 addManager()
     .then(teamArray => {
         return generatePage(teamArray);
@@ -327,11 +334,11 @@ addManager()
         return writeFile(data);
     })
     .then(writeFileResponse => {
-        // console.log(writeFileResponse);
+       
         return copyFile();
     })
     .then(copyFileResponse => {
-        // console.log(copyFileResponse);
+       
     })
     .catch(err => {
         console.log(err);

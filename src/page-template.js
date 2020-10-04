@@ -1,54 +1,8 @@
-// const Manager = require("../lib/Manager");
-// const Engineer = require("../lib/Engineer");
-// const engineers = [];
-// let engineer = {};
-
-// Destructure team members
-// const generateTeam = team => {
-//     if(!team) {
-//         return '';
-//     }
-
-//     return `
-//     <section class="my-3" id="about">
-//     <h2 class="text-dark bg-primary p-2 display-inline-block">About Me</h2>
-//     <p>${team}</p>
-//   </section>
-// `;
-// };
-
-
-
-
-
 const generateMembers = membersArray => {
 
     if (!membersArray) {
         return '';
     }
-
-    const generateManager = membersArray.filter(member => {
-        if (member.getRole().role === 'Manager') {
-            return true;
-        } else {
-            return false;
-        }
-    });
-
-    const managerHtmlArr = generateManager.map(({ name, id, email, officeNumber }) => {
-        return `
-          <div class="col-12 mb-2 bg-dark text-light p-3 flex-column">
-            <h3 class="portfolio-item-title text-light">${name}</h3>
-            <h5 class="portfolio-languages">
-              ID:
-              ${id}
-            </h5>
-            <p>Office: ${officeNumber}</p>
-            <p>Email: ${email}</p>   
-            <a href="${email}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
-          </div>
-        `;
-      });
 
     const generateEngineers = membersArray.filter(member => {
         if (member.getRole().role === 'Engineer') {
@@ -62,12 +16,12 @@ const generateMembers = membersArray => {
         ({ name, id, email, github }) => {
           return `
             <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
-              <h3 class="portfolio-item-title text-light">${name}</h3>
-              <h5 class="portfolio-languages">
-              Engineer
+              <h3 class="team-item-title text-light">${name}</h3>
+              <h5 class="team-languages">
+              Engineer<i class="fas fa-cog ml-2"></i>
             </h5>
             <p>ID: ${id}</p>
-              <a href="mailto:${email}" class="btn mt-auto">Email: ${email}</a>
+              <a href="mailto:${email}" class="btn mt-auto"><i class="fas fa-envelope-square mr-2"></i>Email: ${email}</a>
               <a href="https://github.com/${github}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>Visit My GitHub Page</a>
             </div>
           `;
@@ -86,20 +40,20 @@ const generateMembers = membersArray => {
         ({ name, id, email, school }) => {
           return `
             <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
-              <h3 class="portfolio-item-title text-light">${name}</h3>
-              <h5 class="portfolio-languages">
-                Intern
+              <h3 class="team-item-title text-light">${name}</h3>
+              <h5 class="team-languages">
+                Intern<i class="fas fa-graduation-cap ml-2"></i>
               </h5>
               <p>ID: ${id}</p>
               <p>School: ${school}</p>
-              <a href="mailto:${email}" class="btn mt-auto">Email: ${email}</a>
+              <a href="mailto:${email}" class="btn mt-auto"><i class="fas fa-envelope-square mr-2"></i>Email: ${email}</a>
             </div>
           `;
         }
       );
 
     return `
-    <section class="my-3" id="portfolio">
+    <section class="my-3" id="team">
       <h2 class="text-dark bg-primary p-2 display-inline-block">Team</h2>
       <div class="flex-row justify-space-between">
       ${managerHtmlArr}
@@ -142,15 +96,17 @@ module.exports = templateData => {
         </div>
       </header>
       <main class="container my-5">
-      <h2 class="text-dark bg-primary p-2 display-inline-block">Manager</h2>
-      <div class="col-12 mb-2 bg-dark text-light p-3 flex-column">
-      <h3 class="portfolio-item-title text-light">${manager.name}</h3>
-      <h5 class="portfolio-languages">
-        ${manager.getRole().role}
+      
+      
+      <div class="pl-3 col-12 mb-2 bg-dark text-light p-3 flex-column">
+      <h3 class="team-item-title text-light">${manager.name}</h3>
+      <h5 class="team-languages">
+        ${manager.getRole().role}<i class="fas fa-mug-hot mr-2 ml-2"></i>
       </h5>
       <p>ID: ${manager.id}</p> 
       <p>Office: ${manager.officeNumber}</p>
-      <a href="mailto:${manager.email}" class="btn mt-auto">Email: ${manager.email}</a>  
+      <a href="mailto:${manager.email}" class="btn mt-auto"><i class="fas fa-envelope-square mr-2"></i>Email: ${manager.email}</a>
+      </div>  
             ${generateMembers(members)}
       </main>
       <footer class="container text-center py-3">
