@@ -64,11 +64,11 @@ const generateMembers = membersArray => {
             <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
               <h3 class="portfolio-item-title text-light">${name}</h3>
               <h5 class="portfolio-languages">
-                ID:
-                ${id}
-              </h5>
+              Engineer
+            </h5>
+            <p>ID: ${id}</p>
               <p>Email: ${email}</p>
-              <a href="${github}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
+              <a href="https://github.com/${github}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>GitHub</a>
             </div>
           `;
         }
@@ -88,9 +88,9 @@ const generateMembers = membersArray => {
             <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
               <h3 class="portfolio-item-title text-light">${name}</h3>
               <h5 class="portfolio-languages">
-                Id:
-                ${id}
+                Intern
               </h5>
+              <p>ID: ${id}</p>
               <p>School: ${school}</p>
               <p>Email: ${email}</p>
               <a href="${email}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
@@ -98,25 +98,6 @@ const generateMembers = membersArray => {
           `;
         }
       );
-
-    // const memberHtmlArr = membersArray.map(({
-    //     name,
-    //     id,
-    //     email
-    // }) => {
-
-    //     return `
-    //       <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
-    //         <h3 class="portfolio-item-title text-light">${name}</h3>
-    //         <h5 class="portfolio-languages">
-    //           ID:
-    //           ${id}
-    //         </h5>
-    //         <p>Email: ${email}</p>
-    //         <a href="${email}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
-    //       </div>
-    //     `;
-    // });
 
     return `
     <section class="my-3" id="portfolio">
@@ -164,6 +145,17 @@ module.exports = templateData => {
         </div>
       </header>
       <main class="container my-5">
+      <h2 class="text-dark bg-primary p-2 display-inline-block">Manager</h2>
+      <div class="col-12 mb-2 bg-dark text-light p-3 flex-column">
+      <h3 class="portfolio-item-title text-light">${manager.name}</h3>
+      <h5 class="portfolio-languages">
+        ${manager.getRole().role}
+      </h5>
+      <p>ID: ${manager.id}</p> 
+      <p>Office: ${manager.officeNumber}</p>
+      <p>Email: ${manager.email}</p>   
+      <a href="${manager.email}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
+    </div>
             ${generateMembers(members)}
       </main>
       <footer class="container text-center py-3">
@@ -192,3 +184,24 @@ module.exports = templateData => {
 //     <h4>${engineer.id}</h4>
 //     <h4>${engineer.email}</h4>
 //     <h4>${engineer.github}</h4>
+
+// [
+//     Manager {
+//       name: 'Jeff Johnston',
+//       id: '1',
+//       email: 'jeffwjohn@yahoo.com',
+//       officeNumber: '321a'
+//     },
+//     Engineer {
+//       name: 'Bill Weisman',
+//       id: '2',
+//       email: 'bill@email.com',
+//       github: 'jeffwjohn'
+//     },
+//     Intern {
+//       name: 'Jody Springer',
+//       id: '3',
+//       email: 'jody@email.com',
+//       school: 'Harvard'
+//     }
+//   ]
