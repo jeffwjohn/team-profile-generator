@@ -66,12 +66,9 @@ const generateMembers = membersArray => {
 };
 
 module.exports = templateData => {
-    console.log('Template: ', templateData);
-
+   
     // destructure projects and about data from templateData based on their property key names
     const [manager, ...members] = templateData;
-    console.log(manager);
-    console.log(members);
 
     return `
     <!DOCTYPE html>

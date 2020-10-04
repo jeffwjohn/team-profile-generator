@@ -271,7 +271,6 @@ Add an Intern
             );
 
             teamArray.push(this.intern);
-            console.log(teamArray);
             return answers;
 
         }).then(answers => {
