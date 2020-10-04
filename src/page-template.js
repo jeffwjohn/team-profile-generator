@@ -1,3 +1,4 @@
+// Function that generates team member boxes
 const generateMembers = membersArray => {
 
     if (!membersArray) {
@@ -22,7 +23,7 @@ const generateMembers = membersArray => {
             </h5>
             <p>ID: ${id}</p>
               <a href="mailto:${email}" class="btn mt-auto"><i class="fas fa-envelope-square mr-2"></i>Email: ${email}</a>
-              <a href="https://github.com/${github}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>Visit my GitHub page</a>
+              <a href="https://github.com/${github}" target="_blank" class="btn mt-auto"><i class="fab fa-github mr-2"></i>Visit my GitHub page</a>
             </div>
           `;
         }
@@ -110,50 +111,10 @@ module.exports = templateData => {
       <footer class="container py-3">
         <h3 class="text-dark">&copy; ${new Date().getFullYear()} by Jeff Johnston</h3>
         <nav class="flex-row">
-            <a class="my-1 px-2 py-1 bg-dark text-light" href="https://github.com/jeffwjohn/team-profile-generator"><i class="fab fa-github mr-2"></i>View on GitHub</a>
+            <a class="my-1 px-2 py-1 bg-dark text-light" href="https://github.com/jeffwjohn/team-profile-generator target="_blank""><i class="fab fa-github mr-2"></i>View on GitHub</a>
           </nav>
       </footer>
     </body>
     </html>
     `;
 };
-
-
-
-// module.exports = generateHTML;
-
-// <h2>${manager.name}</h2>
-// <h3>${manager.getRole().role}</h3>
-// <h4>${manager.id}</h4>
-// <h4>${manager.email}</h4>
-// <h4>${manager.officeNumber}</h4>
-// </div>
-
-// <section id='team'  class='team'>
-//     <div>
-//     <h2>${engineer.name}</h2>
-//     <h3>${engineer.getRole().role}</h3>
-//     <h4>${engineer.id}</h4>
-//     <h4>${engineer.email}</h4>
-//     <h4>${engineer.github}</h4>
-
-// [
-//     Manager {
-//       name: 'Jeff Johnston',
-//       id: '1',
-//       email: 'jeffwjohn@yahoo.com',
-//       officeNumber: '321a'
-//     },
-//     Engineer {
-//       name: 'Bill Weisman',
-//       id: '2',
-//       email: 'bill@email.com',
-//       github: 'jeffwjohn'
-//     },
-//     Intern {
-//       name: 'Jody Springer',
-//       id: '3',
-//       email: 'jody@email.com',
-//       school: 'Harvard'
-//     }
-//   ]
