@@ -10,7 +10,21 @@ const {
 } = require('./utils/generate-site');
 
 // Manager questions array
-const managerQuestions = [{
+const managerQuestions = [
+    {
+        type: 'input',
+        name: 'team',
+        message: 'Enter the name of your team.',
+        validate: nameInput => {
+            if (nameInput) {
+                return true;
+            } else {
+                console.log("Please enter the name of your team!");
+                return false;
+            }
+        }
+    },
+    {
         type: 'input',
         name: 'name',
         message: "What is the team manager's name?",
@@ -206,7 +220,8 @@ const addManager = () => {
             answers.name,
             answers.id,
             answers.email,
-            answers.officeNumber
+            answers.officeNumber,
+            answers.team
         );
 
         teamArray.push(this.manager);

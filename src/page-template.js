@@ -22,7 +22,7 @@ const generateMembers = membersArray => {
             </h5>
             <p>ID: ${id}</p>
               <a href="mailto:${email}" class="btn mt-auto"><i class="fas fa-envelope-square mr-2"></i>Email: ${email}</a>
-              <a href="https://github.com/${github}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>Visit My GitHub Page</a>
+              <a href="https://github.com/${github}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>Visit my GitHub page</a>
             </div>
           `;
         }
@@ -54,9 +54,9 @@ const generateMembers = membersArray => {
 
     return `
     <section class="my-3" id="team">
-      <h2 class="text-dark bg-primary p-2 display-inline-block">Team</h2>
+      
       <div class="flex-row justify-space-between">
-      ${managerHtmlArr}
+      
       ${engineerHtmlArr.join('')}
       ${internHtmlArr.join('')}
       </div>
@@ -89,10 +89,8 @@ module.exports = templateData => {
     <body>
       <header>
         <div class="container flex-row justify-space-between align-center py-3">
-          <h1 class="page-title text-secondary bg-dark py-2 px-3">${manager.name}'s Team</h1>
-          <nav class="flex-row">
-            <a class="ml-2 my-1 px-2 py-1 bg-secondary text-dark" href="https://github.com/jeffwjohn/team-profile-generator">GitHub</a>
-          </nav>
+          <h1 class="page-title text-secondary bg-dark py-2 px-3">${manager.team}</h1>
+          
         </div>
       </header>
       <main class="container my-5">
@@ -109,8 +107,11 @@ module.exports = templateData => {
       </div>  
             ${generateMembers(members)}
       </main>
-      <footer class="container text-center py-3">
+      <footer class="container py-3">
         <h3 class="text-dark">&copy; ${new Date().getFullYear()} by Jeff Johnston</h3>
+        <nav class="flex-row">
+            <a class="my-1 px-2 py-1 bg-dark text-light" href="https://github.com/jeffwjohn/team-profile-generator"><i class="fab fa-github mr-2"></i>View on GitHub</a>
+          </nav>
       </footer>
     </body>
     </html>

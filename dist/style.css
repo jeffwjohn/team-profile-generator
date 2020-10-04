@@ -78,6 +78,11 @@ header {
   top: 0;
 }
 
+footer {
+  text-align: center;
+ 
+}
+
 nav {
   width: 100%;
   margin-top: 10px;
@@ -85,8 +90,8 @@ nav {
 }
 
 nav a:hover {
-  color: var(--secondary);
-  background-color: var(--dark);
+  color: var(--dark);
+  background-color: var(--primary);
 }
 
 .page-title {
@@ -922,9 +927,16 @@ nav a:hover {
 
 /* col-lg */
 @media screen and (min-width: 992px) {
+
+  footer {
+    text-align: left;
+   
+  }
+
   nav {
     width: auto;
-    justify-content: flex-end;
+    justify-content: flex-start;
+
   }
 
   .page-title {
