@@ -13,7 +13,7 @@ Team Profile Generator is an interactive, Node.js-driven application that captur
 
  
 ### Installation
-  Clone or fork the code from the README-Generator repository on GitHub. Open the code in a standard code editing application, such as VS Code.
+  Clone or fork the code from the Team-Profile-Generator repository on GitHub. Open the code in a standard code editing application, such as VS Code.
 ### Usage
  Open an intregrated terminal and type the command "node index.js." Follow the prompts to generate your custom team profile page!
 ### License
@@ -31,5 +31,8 @@ https://github.com/jeffwjohn
     
 ##### Send any questions to the following email address:
 jeffwjohn@yahoo.com
+
+##### View a demonstration video at the following link:
+https://drive.google.com/file/d/1B1P_hdYJBgLxeWMhoLdQLawT2FEwPOj_/view
     
     

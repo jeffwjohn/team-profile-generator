@@ -1,4 +1,3 @@
-// const fs = require('fs');
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template.js');
 const Manager = require('./lib/Manager');
@@ -9,26 +8,6 @@ const {
     writeFile,
     copyFile
 } = require('./utils/generate-site');
-
-
-// const pageHTML = generatePage(name, github);
-
-// fs.writeFile('./index.html', pageHTML, err => {
-//     if (err) throw err;
-
-// function Program() {
-//     this.manager;
-// }
-
-// FUNCTION TO WRITE HTML
-// const writeHTML = (data) => {
-//     fs.writeFile("Team-Profile.html", templateData, (err) => {
-//         if (err) console.log(err);
-
-//         console.log('HTML created!');
-
-//     });
-// };
 
 // ARRAY OF QUESTIONS
 const managerQuestions = [{
@@ -339,15 +318,6 @@ Add an Engineer
     };
 
 }
-
-//FUNCTION TO INITIALIZE PROGRAM
-// Program.prototype.initializeProgram = function () {
-
-
-
-// }
-// FUNCTION CALL RUN PROGRAM
-// init();
 
 addManager()
     .then(teamArray => {
