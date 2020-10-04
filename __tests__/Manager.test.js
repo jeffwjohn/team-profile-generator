@@ -1,8 +1,5 @@
 const Manager = require('../lib/Manager');
 
-console.log(new Manager());
-
-
 test('creates a manager object', () => {
     const manager = new Manager('Mocker', 1, 'mocker@company.com', '100A', 'Team Name');
 
