@@ -108,7 +108,7 @@ module.exports = templateData => {
       <footer class="container py-3">
         <h3 class="text-dark">&copy; ${new Date().getFullYear()} by Jeff Johnston</h3>
         <nav class="flex-row">
-            <a class="my-1 px-2 py-1 bg-dark text-light" href="https://github.com/jeffwjohn/team-profile-generator target="_blank""><i class="fab fa-github mr-2"></i>View on GitHub</a>
+            <a class="my-1 px-2 py-1 bg-dark text-light" href="https://github.com/jeffwjohn/team-profile-generator" target="_blank"><i class="fab fa-github mr-2"></i>View on GitHub</a>
           </nav>
       </footer>
     </body>
